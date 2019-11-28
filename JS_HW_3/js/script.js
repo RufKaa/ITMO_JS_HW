@@ -8,8 +8,9 @@ B = [-3, -7, -100, -33]
 */
 let A = [12, 4, 3, 10, 1, 20],  
     B = [-3, -7, -100, -33];
-console.log(A+B);
-//console.log(B+A);
+    C = A + B;
+console.log(C);
+
 
 
 /*TASK 2
