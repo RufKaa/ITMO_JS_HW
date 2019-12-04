@@ -17,87 +17,59 @@
 */
 
 /*TASK 1
-1. Дана строка, изображающая целое число. Вывести сумму цифр этого числа.
+1. Написать функцию сравнения двух массивов. Функция принимает на вход два массива, 
+сравнивает их и возвращает true, если массивы равны и false, если не равны. 
 */
-function tsk1() {
-    let tsk1_str = document.getElementById('tsk1_str').value;
-    let symb, sum = 0;
-    for (let i = 0; i < tsk1_str.length; i++) {
-        symb = parseInt(tsk1_str[i]);
-        if (symb) {
-            sum = sum + symb;
+let length = 3;
+let arr1 = [],
+    arr2 = [];
+for (let i = 0; i < length; i++) {
+    arr1.push(Math.round(Math.random() * 5));
+    arr2.push(Math.round(Math.random() * 5));
+}
+function tsk1(arrA, arrB) {
+    for (let i = 0; i < length; i++){
+        if (arrA[i] !== arrB[i]) {
+            return false;
         }
     }
-    document.getElementById('tsk1_result').value = sum;
+    return true;    
 }
-document.getElementById('tsk1_btn').onclick = tsk1;
-
+console.log(tsk1(arr1, arr2));
 
 /*
-2. Дана строка и символ. Удвоить каждое вхождение заданного символа в строку.
+2. Напишите функцию range, принимающую три аргумента, два обязательных: начало и конец диапазона, 
+третий аргумент - необязательный (если он не задан, шаг равен единице) – шаг для построения массива.
+Функция возвращает массив, который содержит все числа из него, включая начальное и конечное. 
+Например, вызов функции range(1, 10, 2) должен будет вернуть [1, 3, 5, 7, 9].
 */
-
-function tsk2() {
-    let tsk2_str = document.getElementById('tsk2_str').value;
-    let tsk2_symb = document.getElementById('tsk2_symb').value;
-    let msv = tsk2_str.slice().split(''),
-        res = msv.slice();
-    counter = 0;
-    for (let i = 0; i < msv.length; i++) {
-        if (msv[i] == tsk2_symb) {
-            res.splice(i + counter, 0, tsk2_symb);
-            counter += 1;
-        }
+function range (start, end, step = 1) {
+    let arr = [];
+    for (let i = start; i <= end; i += step) {
+        arr.push(i);
     }
-    document.getElementById('tsk2_result').value = res.join('');
+    return arr;
 }
-document.getElementById('tsk2_btn').onclick = tsk2;
+console.log(range(4, 11, 3));
+
 
 /* 
-3. Проверить что введенный пароль удовлетворяет 
-следующим условиям сложности:
-- длинна от 9 символов;
-- содержит обязательно английские буквы верхнего и нижнего регистра;
-- содержит более двух цифр;
-- содержит обязательно один из неалфавитных символов (например, !, $, #, %).
+3. Построить объект студент со свойствами:
+Имя, Фамилия, Возраст, Интересы (в виде массива), Место обучения.
+Написать отдельную функцию, которой передается объект студент, 
+а она выводит его содержимое.
 */
-
-function tsk3() {
-
-    let psd = document.getElementById('tsk3_psd').value;
-    
-    //проверяем количество символов
-    let regexp = /.{9,}/ig;
-    if (!psd.match(regexp)){
-        alert('too short password');
-        return;
-    };
-    console.log(psd.match(regexp))
-
-    //содержит обязательно один из неалфавитных символов (например, !, $, #, %)
-    regexp = /\W/ig;
-    if (!psd.match(regexp)){
-        alert('There must be at least one special symbol');
-        return;
-    };
-    console.log(psd.match(regexp))
-
-    //содержит обязательно английские буквы верхнего и нижнего регистра
-    regexp = /.*[A-Z]+.*[a-z]+/g;
-    if (!psd.match(regexp)){
-        alert('There must be at least one uppercase and one lowercase letters');
-        return;
-    };
-    console.log(psd.match(regexp))
-    
-    //проверяем количество цифр
-    regexp = /\d*.*\d*.*\d*/i;
-    if (!psd.match(regexp)){
-        alert('There must be at least 3 numbers');
-        return;
-    };
-    console.log(psd.match(regexp));
-
-    alert('Your password is OK')
+let student = {
+    'name': 'Ruf',
+    'secondName': 'Kaa',
+    'age': 25,
+    'hobby': ['snowboard', 'windserfing', 'hiking'],
+    'institute': 'ITMO',
+};
+function tsk3(stud_obj) {
+    keys = Object.keys(stud_obj);
+    for (let i = 0; i < keys.length; i++){
+        console.log(`${keys[i]}: ${stud_obj[keys[i]]}`);
+    }
 }
-document.getElementById('tsk3_btn').onclick = tsk3;
+tsk3(student);
