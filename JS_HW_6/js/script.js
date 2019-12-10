@@ -45,9 +45,6 @@ function tsk2(){
     }
     
 }
-rnd_func = tsk2();
-for (let i = 0; i < 100; i++)
-    console.log(rnd_func());
 
 /*
 3. Построить объект студент:
